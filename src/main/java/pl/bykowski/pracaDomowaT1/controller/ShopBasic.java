@@ -9,9 +9,6 @@ import pl.bykowski.pracaDomowaT1.model.Product;
 import pl.bykowski.pracaDomowaT1.repository.ShopRepository;
 import pl.bykowski.pracaDomowaT1.service.ProductService;
 
-import java.util.stream.DoubleStream;
-import java.util.stream.Stream;
-
 @Controller
 @Profile("Start")
 public class ShopBasic implements ShopRepository {
