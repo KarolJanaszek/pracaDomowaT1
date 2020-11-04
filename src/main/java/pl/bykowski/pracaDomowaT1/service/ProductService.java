@@ -16,13 +16,9 @@ public class ProductService {
         addRandomProduct();
     }
 
-    public void showBasicBasketValue() {
-
-    }
-
     private void addRandomProduct() {
         for (int i = 0; i <= 4; i++) {
-            addProductToBasket(new Product("Towar nr " + i));
+            productList.add(new Product("Towar nr " + i));
             System.out.println(productList.get(i));
         }
     }

@@ -9,6 +9,9 @@ import pl.bykowski.pracaDomowaT1.model.Product;
 import pl.bykowski.pracaDomowaT1.repository.ShopRepository;
 import pl.bykowski.pracaDomowaT1.service.ProductService;
 
+import java.util.stream.DoubleStream;
+import java.util.stream.Stream;
+
 @Controller
 @Profile("Start")
 public class ShopBasic implements ShopRepository {
@@ -23,10 +26,7 @@ public class ShopBasic implements ShopRepository {
     @Override
     @EventListener(ApplicationReadyEvent.class)
     public void sumBasketPrice() {
-        Double sum = 0.0;
-        for (Product p : productService.getProductList()) {
-            sum += p.getPrice();
-        }
+        Double sum = productService.getProductList().stream().mapToDouble(Product::getPrice).sum();
         System.out.println(String.format("Cena netto produktów w koszyku wynosi: %1.2f PLN", sum));
     }
 }

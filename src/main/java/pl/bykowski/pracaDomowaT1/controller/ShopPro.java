@@ -28,10 +28,7 @@ public class ShopPro implements ShopRepository {
     @Override
     @EventListener(ApplicationReadyEvent.class)
     public void sumBasketPrice() {
-        Double sum = 0.0;
-        for (Product p : productService.getProductList()) {
-            sum += p.getPrice();
-        }
+        Double sum = productService.getProductList().stream().mapToDouble(Product::getPrice).sum();
         System.out.println(String.format("Cena produktów w koszyku wynosi netto: %1.2f PLN, " +
                 "butto: %1.2f PLN", sum, addTax(sum)));
         System.out.println(String.format("Twój rabat to %1.0f procent. " +
